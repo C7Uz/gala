@@ -1,0 +1,607 @@
+/**
+ * Estilos para el frontend del sistema de alquileres
+ * Archivo: assets/css/frontend.css
+ */
+
+/* ==========================================================================
+   Formulario de Alquiler en Página de Producto
+   ========================================================================== */
+
+.rental-form-wrapper {
+    margin: 20px 0;
+    padding: 20px;
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+}
+
+.rental-form-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #333;
+    border-bottom: 2px solid #0073aa;
+    padding-bottom: 10px;
+}
+
+/* Selectores de fecha */
+.rental-date-selector {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.date-field {
+    flex: 1;
+    min-width: 200px;
+}
+
+.date-field label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #555;
+}
+
+.date-field input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    background: white url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>') no-repeat right 10px center;
+    padding-right: 40px;
+    cursor: pointer;
+}
+
+.date-field input[type="text"]:focus {
+    outline: none;
+    border-color: #0073aa;
+    box-shadow: 0 0 5px rgba(0, 115, 170, 0.2);
+}
+
+.date-field input[type="text"]:disabled {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+}
+
+/* Estado de disponibilidad */
+.availability-status {
+    margin: 15px 0;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.availability-status .checking {
+    color: #666;
+    font-style: italic;
+}
+
+.availability-status .available {
+    color: #4CAF50;
+    font-weight: 600;
+}
+
+.availability-status .not-available {
+    color: #f44336;
+    font-weight: 600;
+}
+
+/* Desglose de precio */
+.rental-price-breakdown {
+    background: white;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    margin: 20px 0;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.price-row:last-child {
+    border-bottom: none;
+}
+
+.price-row.total {
+    margin-top: 10px;
+    padding-top: 15px;
+    border-top: 2px solid #333;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.price-row .label {
+    color: #666;
+}
+
+.price-row .value {
+    color: #333;
+    font-weight: 500;
+}
+
+.price-row.total .value {
+    color: #0073aa;
+}
+
+/* Botón de añadir al carrito */
+.rental-add-to-cart {
+    width: 100%;
+    padding: 15px;
+    background: #0073aa;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.rental-add-to-cart:hover:not(:disabled) {
+    background: #005a87;
+}
+
+.rental-add-to-cart:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.rental-add-to-cart.loading {
+    position: relative;
+    color: transparent;
+}
+
+.rental-add-to-cart.loading::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    left: 50%;
+    margin: -8px 0 0 -8px;
+    border: 2px solid white;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Enlaces adicionales */
+.rental-links {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.rental-links a {
+    color: #0073aa;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 14px;
+}
+
+.rental-links a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   jQuery UI Datepicker - Personalización
+   ========================================================================== */
+
+.ui-datepicker {
+    background: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.ui-datepicker-header {
+    background: #0073aa;
+    color: white;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.ui-datepicker-title {
+    color: white;
+    font-weight: 600;
+}
+
+.ui-datepicker-prev,
+.ui-datepicker-next {
+    color: white;
+    cursor: pointer;
+}
+
+.ui-datepicker-calendar td {
+    padding: 5px;
+    text-align: center;
+}
+
+.ui-datepicker-calendar td a {
+    display: block;
+    padding: 5px;
+    text-decoration: none;
+    color: #333;
+    border-radius: 3px;
+}
+
+.ui-datepicker-calendar td a:hover {
+    background: #f0f0f0;
+}
+
+.ui-datepicker-calendar td.ui-datepicker-current-day a {
+    background: #0073aa;
+    color: white;
+}
+
+.ui-datepicker-calendar td.date-blocked a {
+    background: #ffebee;
+    color: #c62828;
+    cursor: not-allowed;
+}
+
+.ui-datepicker-calendar td.date-available a {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+/* ==========================================================================
+   Carrito y Checkout
+   ========================================================================== */
+
+/* Items de alquiler en el carrito */
+.woocommerce-cart .rental-item-data {
+    font-size: 13px;
+    color: #666;
+    margin-top: 10px;
+}
+
+.woocommerce-cart .rental-item-data dt {
+    font-weight: 600;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.woocommerce-cart .rental-item-data dd {
+    display: inline;
+    margin-right: 15px;
+}
+
+/* Badge de alquiler */
+.rental-badge {
+    display: inline-block;
+    background: #0073aa;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-left: 10px;
+}
+
+/* ==========================================================================
+   Mi Cuenta - Sección de Alquileres
+   ========================================================================== */
+
+.woocommerce-MyAccount-navigation ul li.woocommerce-MyAccount-navigation-link--rentals a::before {
+    content: '📅';
+    margin-right: 5px;
+}
+
+.my-rentals-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+.my-rentals-table th {
+    background: #f5f5f5;
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid #ddd;
+}
+
+.my-rentals-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.my-rentals-table .rental-status {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.rental-status.status-active {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+.rental-status.status-completed {
+    background: #e8f5e9;
+    color: #388e3c;
+}
+
+.rental-status.status-overdue {
+    background: #ffebee;
+    color: #c62828;
+}
+
+.rental-status.status-pending {
+    background: #fff3e0;
+    color: #f57c00;
+}
+
+/* Acciones de alquiler */
+.rental-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.rental-actions .button {
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+/* ==========================================================================
+   Modal de Disponibilidad
+   ========================================================================== */
+
+.rental-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+}
+
+.rental-modal .modal-content {
+    background-color: white;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 5px;
+    width: 90%;
+    max-width: 800px;
+    position: relative;
+    animation: modalFadeIn 0.3s;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.rental-modal .close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.rental-modal .close:hover {
+    color: #000;
+}
+
+.rental-modal h2 {
+    margin-bottom: 20px;
+    color: #333;
+    border-bottom: 2px solid #0073aa;
+    padding-bottom: 10px;
+}
+
+/* ==========================================================================
+   Calendario de Disponibilidad
+   ========================================================================== */
+
+#availability-calendar,
+#modal-calendar {
+    max-width: 100%;
+}
+
+.fc-event {
+    border-radius: 3px;
+    padding: 2px 5px;
+    font-size: 12px;
+}
+
+.fc-event.available-date {
+    background: #4CAF50;
+    border-color: #4CAF50;
+}
+
+.fc-event.unavailable-date {
+    background: #f44336;
+    border-color: #f44336;
+}
+
+.fc-day.blocked-date {
+    background: #ffebee;
+}
+
+.fc-day-number {
+    color: #333;
+}
+
+/* ==========================================================================
+   Notificaciones
+   ========================================================================== */
+
+.woocommerce-notices-wrapper {
+    margin: 20px 0;
+}
+
+.woocommerce-message,
+.woocommerce-error {
+    padding: 15px 40px 15px 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    position: relative;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.woocommerce-message {
+    background: #e8f5e9;
+    border-left: 4px solid #4CAF50;
+    color: #2e7d32;
+}
+
+.woocommerce-error {
+    background: #ffebee;
+    border-left: 4px solid #f44336;
+    color: #c62828;
+}
+
+.notice-dismiss {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: inherit;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+.notice-dismiss:hover {
+    opacity: 1;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .rental-date-selector {
+        flex-direction: column;
+    }
+    
+    .date-field {
+        min-width: 100%;
+    }
+    
+    .rental-form-wrapper {
+        padding: 15px;
+    }
+    
+    .my-rentals-table {
+        font-size: 14px;
+    }
+    
+    .my-rentals-table th,
+    .my-rentals-table td {
+        padding: 8px;
+    }
+    
+    .rental-modal .modal-content {
+        width: 95%;
+        margin: 20px auto;
+        padding: 20px;
+    }
+    
+    .price-row {
+        font-size: 14px;
+    }
+    
+    .price-row.total {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .my-rentals-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    
+    .rental-actions {
+        flex-direction: column;
+    }
+    
+    .rental-add-to-cart {
+        font-size: 14px;
+        padding: 12px;
+    }
+}
+
+/* ==========================================================================
+   Utilidades
+   ========================================================================== */
+
+.text-center {
+    text-align: center;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+.loading-spinner {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #0073aa;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
